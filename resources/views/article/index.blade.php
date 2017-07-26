@@ -20,8 +20,16 @@ sdsd
                 </div>
             </div>
         </div>
-            @empty()
-            Article feed will appear here
+            @empty
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="jumbotron text-center">
+                        Article feeds will appear here
+                    </div>
+                </div>
+
+            </div>
+
         @endforelse
     </div>
 

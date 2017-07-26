@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         //
         $articles=Article::whereLive(1)->get();
-        return view('article.index');
+        return view('article.index', compact('articles'));
     }
 
     /**
