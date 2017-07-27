@@ -13,10 +13,11 @@
                     </span>
                 </div>
                 <div class="panel-body">
-sdsd
+{{$article->shortContent}}
+                    <a class="info" href="/articles/{{$article->id}}">Read more</a>
                 </div>
-                <div class="panel-footer clearfix">
-                    <i class="fa fa-heart pull-right"></i>
+                <div class="panel-footer clearfix ">
+                    <i class="fa fa-heart pull-right "></i>
                 </div>
             </div>
         </div>
@@ -31,6 +32,10 @@ sdsd
             </div>
 
         @endforelse
+
+    </div>
+    <div class="row col-md-6 col-md-offset-3">
+        {{$articles-> links()}}
     </div>
 
 @endsection

@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles=Article::whereLive(1)->get();
+        $articles=Article::paginate(10);
         return view('article.index', compact('articles'));
     }
 
@@ -35,11 +35,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $articleContent='content';
         //initialise article model
         $article= new Article;
 
         $article->user_id= Auth::user()->id;
-        $article->content= $request->content;
+        $article->content= $request->$articleContent;
         $article->live= (boolean)$request->live;
         $article->post_on=$request->post_on;
 
@@ -59,6 +60,8 @@ class ArticleController extends Controller
     public function show($id)
     {
         //
+        $article= Article::findOrFail($id);
+        return view('article.show',compact('article'));
     }
 
     /**
@@ -70,6 +73,9 @@ class ArticleController extends Controller
     public function edit($id)
     {
         //
+        $article= Article::findOrFail($id);
+        return view('article.edit',compact('article'));
+
     }
 
     /**
