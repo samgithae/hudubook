@@ -6,6 +6,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Sam article
+                    <small>
+                        <a href="/articles/{{ $article->id }}/edit">Edit</a>
+                    </small>
                     <span class="pull-right">
                         {{$article->created_at->diffForHumans()}}
                     </span>

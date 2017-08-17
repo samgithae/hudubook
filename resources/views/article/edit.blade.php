@@ -11,8 +11,11 @@
                     <form action="/articles/{{$article->id}}" method="post">
                         {{method_field('PUT')}}
                         {{csrf_field()}}
+
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label>Content</label>
+
                             <textarea name="content" class="form-control" >{{$article->content}}</textarea>
                         </div>
                         <div class="checkbox">
@@ -22,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label for="post_on">Post on</label>
-                            <input type="datetime-local" name="post_on" value="{{$article->post_on->format('Y-m-d \TH:i:s')}}" class="form-control">
+                            <input type="datetime-local" name="post_on" value="{{ $article->post_on->format('Y-m-d H:i:s')}}" class="form-control">
                         </div>
                         <input type="submit" class="btn btn-success pull-right">
                     </form>

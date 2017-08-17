@@ -47,7 +47,7 @@ class ArticleController extends Controller
         $article->save();
 
 
-
+        return redirect('/articles');
 
     }
 
@@ -87,7 +87,16 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        $article=Article::findOrFail($id);
+        if(!isset($request->live))
+            $article->update(array_merge($request->all(),['live'=>false]));
+        else
+        $article->update($request->all());
+        return redirect('/articles');
+
+
     }
 
     /**
@@ -99,5 +108,9 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+        $article=Article::findOrFail($id);
+        $article->delete();
+        return redirect('/articles');
+
     }
 }
