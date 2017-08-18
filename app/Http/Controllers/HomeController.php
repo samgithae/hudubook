@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Article;
+use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $articles=Article::paginate(10);
+        return view('article.index', compact('articles'));
     }
 }

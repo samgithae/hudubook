@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Article;
-use Auth;
 
 class ArticleController extends Controller
 {
